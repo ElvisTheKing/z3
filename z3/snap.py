@@ -206,7 +206,7 @@ class ZFSSnapshotManager(object):
         # for fs_name, fs_snaps in self._parse_snapshots().iteritems():
         fs_snaps = self._parse_snapshots().get(fs_name, {})
         parent = None
-        for snap_name, data in fs_snaps.iteritems():
+        for snap_name, data in fs_snaps.items():
             if not snap_name.startswith(self._snapshot_prefix):
                 continue
             full_name = '{}@{}'.format(fs_name, snap_name)
