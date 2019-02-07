@@ -170,8 +170,9 @@ class ZFSSnapshotManager(object):
         # This is overridden in tests
         # see FakeZFSManager
         return subprocess.check_output(
-            ['zfs', 'list', '-Ht', 'snap', '-o',
-             'name,used,refer,mountpoint,written'])
+                ['zfs', 'list', '-Ht', 'snap', '-o',
+                'name,used,refer,mountpoint,written']).decode('utf-8')
+
 
     def _parse_snapshots(self):
         """Returns all snapshots grouped by filesystem, a dict of OrderedDict's
