@@ -235,7 +235,7 @@ class ZFSSnapshotManager(object):
             raise SoftError(
                 'Nothing to backup for filesystem "{}". Are you sure '
                 'SNAPSHOT_PREFIX="{}" is correct?'.format(
-                    cfg.get('FILESYSTEM'), cfg.get('SNAPSHOT_PREFIX')))
+                    self._fs_name, self._snapshot_prefix))
         return self._snapshots.values()[-1]
 
     def get(self, name):
