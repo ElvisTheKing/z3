@@ -227,7 +227,7 @@ class ZFSSnapshotManager(object):
         return self._build_snapshots(self._fs_name)
 
     def list(self):
-        return self._snapshots.values()
+        return list(self._snapshots.values())
 
     def get_latest(self):
         if len(self._snapshots) == 0:
@@ -236,7 +236,7 @@ class ZFSSnapshotManager(object):
                 'Nothing to backup for filesystem "{}". Are you sure '
                 'SNAPSHOT_PREFIX="{}" is correct?'.format(
                     self._fs_name, self._snapshot_prefix))
-        return self._snapshots.values()[-1]
+        return self.list()[-1]
 
     def get(self, name):
         return self._snapshots.get(name)
